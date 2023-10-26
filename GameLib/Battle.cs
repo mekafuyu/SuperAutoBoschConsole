@@ -31,16 +31,23 @@ public class Battle
         var card1 = Player1.Cards.First();
         var card2 = Player2.Cards.First();
 
-        card1.onBeforeAttack();
-        card2.onBeforeAttack();
+        card1.onBeforeAttack(this);
+        card2.onBeforeAttack(this);
 
-        card1.AttackCard(card2);
-        card2.AttackCard(card1);
+        card1.AttackCard(card2, this);
+        card2.AttackCard(card1, this);
 
         if(card1.Life < 1)
+        {
             Player1.Cards.Remove(card1);
+            card1.onDie(this);
+        }
         if(card2.Life < 1)
+        {
             Player2.Cards.Remove(card2);
+            card2.onDie(this);
+        }
+
         return 0;
     }
 }

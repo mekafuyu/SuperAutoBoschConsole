@@ -1,8 +1,10 @@
+using System;
 public static class DrawConsole
 {
     public static void DrawStore(Game game, bool upgrading, Card selected)
     {
         Console.Clear();
+        Console.WriteLine("Press\n  U: on/off Upgrade Mode\tS: on/off Sell Mode\tEnter: Enter Battle");
         Console.WriteLine("-------------------------------");
         Console.WriteLine($"Gold: {game.Player.gold} | Life: {game.Player.life} | Trophies: {game.Player.trophies} | Turn: {game.turn}\n");
         if(upgrading)
@@ -62,6 +64,7 @@ public static class DrawConsole
                 Console.Write(card.Attack + " " + card.Life + " " + card.Tier);
             Console.Write("\t");
         }
+        Console.WriteLine();
     }
 
     public static void DrawBattle(Game game, Battle battle)
@@ -114,11 +117,13 @@ public static class DrawConsole
                 Console.Write(card.Attack + " " + card.Life + " " + card.Tier);
             Console.Write("\t");
         }
+        Console.WriteLine();
     }
 
     public static void DrawSell(Game game, int pos)
     {
         Console.Clear();
+        Console.WriteLine("Press\n  S: on/off Sell Mode");
         Console.WriteLine("-------------------------------");
         Console.WriteLine($"Gold: {game.Player.gold} | Life: {game.Player.life} | Trophies: {game.Player.trophies} | Turn: {game.turn}\n");
         Console.WriteLine("------------VENDENDO-----------");
@@ -149,5 +154,6 @@ public static class DrawConsole
         for (int i = 0; i < pos; i++)
             Console.Write("\t");
         Console.Write("  ^");
+        Console.WriteLine();
     }
 }

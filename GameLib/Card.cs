@@ -23,22 +23,23 @@ public class Card : ICloneable
         return true;
     }
 
-    public virtual void AttackCard(Card enemy)
+    public virtual void AttackCard(Card enemy, Battle battle)
     {
         enemy.Life -= this.Attack;
         if(enemy.Life > 0)
-            enemy.onReceiveDamage();
+            enemy.onReceiveDamage(battle);
     }
     public virtual void onBuy(){}
     public virtual void onSell(){}
-    public virtual void onBeforeAttack(){}
-    public virtual void onAttack(){}
-    public virtual void onReceiveDamage(){}
+    public virtual void onBeforeAttack(Battle battle){}
+    public virtual void onAttack(Battle battle){}
+    public virtual void onReceiveDamage(Battle battle){}
     public virtual void onLevelUp(){}
     public virtual void onStartTurn(){}
     public virtual void onEndTurn(){}
     public virtual void onStartBattle(Battle battle){}
     public virtual void onEndBattle(Battle battle){}
+    public virtual void onDie(Battle battle){}
 
     public virtual object Clone() {return new Card();}
     // {

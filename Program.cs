@@ -5,6 +5,7 @@
         new Cards.Tier1.Martelo(),
         new Cards.Tier1.ChaveFenda(),
         new Cards.Tier1.Esteira(),
+        new Cards.Tier1.Furadeira(),
     },
     new()
     {
@@ -17,6 +18,8 @@
         new Cards.Tier3.FornoIndustrialEletrico(),
         new Cards.Tier3.FuradeiraCoordenada(),
         new Cards.Tier3.RetificadaCilindrica(),
+        new Cards.Tier3.JetCutting(),
+
     },
     new()
     {

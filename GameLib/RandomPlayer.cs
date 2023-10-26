@@ -2,14 +2,16 @@ using System;
 
 public class RandomPlayer : Player
 {
-    public RandomPlayer(AvailableCards availableCards)
+    public RandomPlayer(Game game)
     {
         Random rnd = new Random();
         int cardNumb = rnd.Next(2, 5);
 
         for (int i = 0; i < cardNumb; i++)
         {
-            this.Cards.Add(availableCards.GetRandomCard());
+            var card = game.AvailableCards.GetRandomCard();
+            card.Player = this;
+            this.Cards.Add(card);
         }
     }
 }

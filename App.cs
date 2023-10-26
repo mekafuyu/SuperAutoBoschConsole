@@ -5,7 +5,7 @@ class App
         this.game = new(tiers);
         this.game.AvailableCards.AddCards(this.game.Tiers[0]);
         this.game.RefreshPlayerStore(true);
-        this.enemy = new(this.game.AvailableCards);
+        this.enemy = new(this.game);
     }
 
     public int Screen = 0;
@@ -38,6 +38,7 @@ class App
         if(i < this.game.Player.Store.MaxCards)
             this.game.Player.Buy(i);
     }
+
     public void Sell(int i)
     {
         if(i > this.game.Player.Cards.Count() - 1)
@@ -93,7 +94,7 @@ class App
                             card.onEndTurn();
                         
                         this.tempPlayer = this.game.Player.Clone() as Player;
-                        this.enemy = new(this.game.AvailableCards);
+                        this.enemy = new( this.game);
                         this.battle = new(this.tempPlayer, this.enemy);
 
                         this.Screen = 2;
@@ -142,6 +143,7 @@ class App
                             this.game.AdvanceTier();
                             this.game.RefreshPlayerStore(true);
                             this.game.ResetPlayerGold();
+                            this.upgrading =  false;
                             foreach (Card card in this.game.Player.Cards)
                             {
                                 card.onStartTurn();

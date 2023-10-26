@@ -30,8 +30,8 @@ public class Player : ICloneable
         var CardToRemove = this.Cards[selectedCard];
 
         this.GiveGold(CardToRemove.Level);
-        CardToRemove.onSell();
         this.Cards.Remove(CardToRemove);
+        CardToRemove.onSell();
     }
 
     public List<Card> RefreshStore(Player player, AvailableCards availableCards, bool free)

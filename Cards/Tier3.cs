@@ -55,9 +55,41 @@ public class RetificadaCilindrica : Card
     public override int Life { get; set; } = 6;
     public override int Tier { get; set; } = 3; 
 
+    public override void onReceiveDamage(Battle battle)
+    {
+        if(this.Player.life > 0)
+        {
+            this.Player.Cards[1].Attack += 1;
+            this.Player.Cards[1].Life += 1;
+
+        }
+    }
+
     public override object Clone()
     {
         return new RetificadaCilindrica()
+        {
+            Name = this.Name,
+            Attack = this.Attack,
+            Life = this.Life,
+            Experience = this.Experience,
+            Tier = this.Tier
+        };
+    }
+}
+
+
+
+public class JetCutting : Card
+{
+    public override string Name { get; set; } = "Jet-cutting";
+    public override int Attack { get; set; } = 6;
+    public override int Life { get; set; } = 3;
+    public override int Tier { get; set; } = 3; 
+
+    public override object Clone()
+    {
+        return new JetCutting()
         {
             Name = this.Name,
             Attack = this.Attack,
