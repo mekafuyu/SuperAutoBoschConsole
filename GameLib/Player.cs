@@ -15,7 +15,6 @@ public class Player : ICloneable
             return;
         if(this.Cards.Count() > 4)
             return;
-            
 
         this.RemoveGold(3);
         this.Cards.Add(this.Store.Buy(item));
@@ -25,9 +24,14 @@ public class Player : ICloneable
 
     public void Sell(int selectedCard)
     {
-        this.gold += this.Cards[selectedCard].Level;
-        this.Cards[selectedCard].onSell();
-        this.Cards[selectedCard] = null;
+        if(selectedCard > this.Cards.Count() - 1)
+            return;
+
+        var CardToRemove = this.Cards[selectedCard];
+
+        this.GiveGold(CardToRemove.Level);
+        CardToRemove.onSell();
+        this.Cards.Remove(CardToRemove);
     }
 
     public List<Card> RefreshStore(Player player, AvailableCards availableCards, bool free)

@@ -8,13 +8,14 @@ public class Card : ICloneable
     public virtual int Life { get; set; }
     public virtual int Attack { get; set; }
     public virtual int Experience { get; set; } = 1;
-    public virtual int Level => (int)(this.Experience/3);
+    public virtual int Level => (int)(this.Experience/3) + 1;
     public virtual int Tier { get; set; }
 
     public virtual bool Upgrade(Card cardToUpgrade)
     {
-        if(cardToUpgrade.Name != this.Name)
+        if(cardToUpgrade.Name != this.Name || cardToUpgrade == this)
             return false;
+        
         
         this.Attack = this.Attack > cardToUpgrade.Attack ? this.Attack + 1 : cardToUpgrade.Attack + 1;
         this.Life = this.Life > cardToUpgrade.Life ? this.Life + 1 : cardToUpgrade.Life + 1;
